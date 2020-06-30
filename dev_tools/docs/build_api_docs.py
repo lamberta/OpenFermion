@@ -22,10 +22,9 @@ from tensorflow_docs.api_generator import doc_controls
 from tensorflow_docs.api_generator import generate_lib
 from tensorflow_docs.api_generator import public_api
 
-import openfermion
+import openfermion as of
 
-flags.DEFINE_string("output_dir", "/tmp/openfermion_api",
-                    "Where to output the docs")
+flags.DEFINE_string("output_dir", "/tmp/of_api", "Where to output the docs")
 
 flags.DEFINE_string("code_url_prefix",
                     ("https://github.com/quantumlib/OpenFermion/tree/master/src"
@@ -44,8 +43,8 @@ def main(unused_argv):
 
     doc_generator = generate_lib.DocGenerator(
         root_title="OpenFermion",
-        py_modules=[("openfermion", openfermion)],
-        base_dir=os.path.dirname(openfermion.__file__),
+        py_modules=[("of", of)],
+        base_dir=os.path.dirname(of.__file__),
         code_url_prefix=FLAGS.code_url_prefix,
         search_hints=FLAGS.search_hints,
         site_path=FLAGS.site_path,
